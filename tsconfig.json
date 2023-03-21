@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@cutehammond/dialog/*": ["./packages/*/src"]
+    }
+  }
+}
