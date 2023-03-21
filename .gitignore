@@ -1,0 +1,15 @@
+# Personal VSCode Settings
+.vscode/*
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+
+# Generated Directories
+dist
