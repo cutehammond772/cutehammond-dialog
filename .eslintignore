@@ -1,0 +1,6 @@
+# Build Results
+./packages/*/dist/
+./packages/*/types/
+
+# config
+**/rollup.config.js

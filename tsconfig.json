@@ -6,6 +6,7 @@
     "jsx": "react",
     "moduleResolution": "node",
     "module": "ESNext",
+    "composite": true,
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,7 +14,13 @@
     "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@cutehammond/dialog/*": ["./packages/*/src"]
-    }
+      "@cutehammond/dialog-*": ["./packages/*/src"]
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
   }
 }
