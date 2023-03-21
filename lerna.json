@@ -1,0 +1,52 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "packages": ["packages/*"],
+  "version": "independent",
+  "command": {
+    "version": {
+      "allowBranch": ["release/*"],
+      "noCommitHooks": true,
+      "noPush": true,
+      "conventionalCommits": true,
+      "changelogPreset": {
+        "types": [
+          {
+            "type": "feat",
+            "section": "Features (추가된 기능)"
+          },
+          {
+            "type": "fix",
+            "section": "Bug Fixes (버그 수정)"
+          },
+          {
+            "type": "chore",
+            "hidden": true
+          },
+          {
+            "type": "docs",
+            "hidden": true
+          },
+          {
+            "type": "style",
+            "hidden": true
+          },
+          {
+            "type": "refactor",
+            "hidden": true
+          },
+          {
+            "type": "perf",
+            "hidden": true
+          },
+          {
+            "type": "test",
+            "hidden": true
+          }
+        ]
+      },
+      "message": "chore(release): publish %s"
+    }
+  }
+}

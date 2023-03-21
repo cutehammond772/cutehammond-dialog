@@ -1,0 +1,11 @@
+{
+  "name": "@cutehammond/dialog",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.5.1"
+  }
+}
