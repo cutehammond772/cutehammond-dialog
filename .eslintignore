@@ -1,6 +1,6 @@
 # Build Results
-./packages/*/dist/
-./packages/*/types/
+packages/**/dist
+packages/**/types
 
-# config
-**/rollup.config.js
+# Rollup Configuration
+rollup.config.js
