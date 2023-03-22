@@ -1,7 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "exclude": ["node_modules"],
-    "include": ["packages/**/*.ts", "packages/**/*.tsx"]
-  }
+  "include": ["./packages/**/src"]
 }
