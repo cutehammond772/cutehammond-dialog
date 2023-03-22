@@ -1,0 +1,42 @@
+{
+  "name": "@cutehammond/dialog-core",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./types/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "yarn clear && yarn build:dist",
+    "build:dist": "rollup -c ../../rollup.config.js",
+    "clear": "yarn clear:types && yarn clear:dist",
+    "clear:types": "if exist types rmdir types /s /q",
+    "clear:dist": "if exist dist rmdir dist /s /q"
+  },
+  "description": "The core library of @cutehammond/dialog.",
+  "author": "LEE\\JHL <cutehammond772@gmail.com>",
+  "homepage": "https://github.com/cutehammond772/cutehammond-dialog#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cutehammond772/cutehammond-dialog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cutehammond772/cutehammond-dialog/issues"
+  }
+}
