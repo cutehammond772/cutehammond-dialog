@@ -34,3 +34,9 @@ export interface DialogKey {
 }
 
 export type Dialog = () => JSX.Element;
+
+export interface DialogKeyProps {
+  dialogKey: DialogKey;
+}
+
+export interface DialogComponentProps extends React.PropsWithChildren, DialogKeyProps {}

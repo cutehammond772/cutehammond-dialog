@@ -1,7 +1,7 @@
 import React from "react";
-import { DialogAreaProfile } from "$provider";
+import { DialogAreaProps } from "$provider";
 
-const DialogArea = ({ children, layout }: React.PropsWithChildren<DialogAreaProfile>) => {
+const DialogArea = ({ children, layout }: React.PropsWithChildren<DialogAreaProps>) => {
   return <div className={layout}>{children}</div>;
 };
 

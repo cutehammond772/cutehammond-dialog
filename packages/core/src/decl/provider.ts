@@ -1,4 +1,5 @@
 import { Dialog, DialogComponentProfile, DialogID, DialogKey } from "$";
+import { DialogResolverComponentProps } from "$resolver/component";
 
 export type ProviderAddFn = <T extends object>(
   dialog: Dialog,
@@ -15,6 +16,11 @@ export interface DialogProviderContext {
   ref: ProviderRefFn;
 }
 
-export interface DialogAreaProfile {
+export interface DialogAreaProps {
   layout: string;
 }
+
+export interface DialogProviderComponentProps
+  extends React.PropsWithChildren,
+    DialogAreaProps,
+    DialogResolverComponentProps {}
