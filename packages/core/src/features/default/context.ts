@@ -1,8 +1,8 @@
 import React from "react";
 import { DefaultResolverContext } from "$resolver/features/default";
-import { error } from "@/utils/resolver";
+import { createResolverErrorMessage } from "@/utils/resolver";
 
-const message = error("DefaultResolver");
+const message = createResolverErrorMessage("DefaultResolver");
 
 const OUT_OF_CONTEXT: DefaultResolverContext = {
   remove() {
