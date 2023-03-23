@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultResolverContext } from "$resolver/features/default";
+import { DefaultResolverContext } from "$features/default";
 import { createResolverErrorMessage } from "@/utils/resolver";
 
 const message = createResolverErrorMessage("DefaultResolver");
