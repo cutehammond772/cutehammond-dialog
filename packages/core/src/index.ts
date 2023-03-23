@@ -7,4 +7,3 @@ export { default as DialogResolver } from "@/resolver/components/DialogResolver"
 
 /* type declarations */
 export type { DialogID, DialogKey, Dialog } from "$";
-export type { DialogAreaProfile } from "$provider";
