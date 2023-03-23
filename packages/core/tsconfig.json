@@ -3,7 +3,9 @@
   "compilerOptions": {
     "composite": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "$": ["./src/decl/common"],
+      "$*": ["./src/decl/*"]
     }
   },
   "include": ["src"]
