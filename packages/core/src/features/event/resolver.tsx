@@ -4,18 +4,31 @@ import { EventResolverContext } from "$features/event/context";
 import { createResolver } from "@/utils/resolver";
 import Context from "@/features/event/context";
 
-type UseSubscriberFn = EventResolverContext["useSubscriber"];
-type UseDOMEventsFn = EventResolverContext["useDOMEvents"];
 type PublishFn = EventResolverContext["publish"];
+type SubscribeFn = EventResolverContext["subscribe"];
+type UnsubscribeFn = EventResolverContext["unsubscribe"];
+type UnsubscribeAllFn = EventResolverContext["unsubscribeAll"];
+type AttachDOMEventsFn = EventResolverContext["attachDOMEvents"];
+type DetachDOMEventsFn = EventResolverContext["detachDOMEvents"];
 
 const EventResolver = createResolver(({ dialogKey, children }) => {
-  const useSubscriber: UseSubscriberFn = useCallback((event, callback) => {}, []);
+  const subscribe: SubscribeFn = useCallback((event, callback, duplicate) => {}, []);
+  const unsubscribe: UnsubscribeFn = useCallback((event) => {}, []);
+  const unsubscribeAll: UnsubscribeAllFn = useCallback((event) => {}, []);
   const publish: PublishFn = useCallback((event) => {}, []);
-  const useDOMEvents: UseDOMEventsFn = useCallback((...events) => {}, []);
+  const attachDOMEvents: AttachDOMEventsFn = useCallback((events) => {}, []);
+  const detachDOMEvents: DetachDOMEventsFn = useCallback(() => {}, []);
 
   const value = useMemo(
-    (): EventResolverContext => ({ useSubscriber, useDOMEvents, publish }),
-    [useSubscriber, useDOMEvents, publish]
+    (): EventResolverContext => ({
+      subscribe,
+      unsubscribe,
+      unsubscribeAll,
+      publish,
+      attachDOMEvents,
+      detachDOMEvents,
+    }),
+    [publish, attachDOMEvents, detachDOMEvents, subscribe, unsubscribe, unsubscribeAll]
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

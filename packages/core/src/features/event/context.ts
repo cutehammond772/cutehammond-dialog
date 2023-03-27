@@ -8,11 +8,20 @@ const OUT_OF_CONTEXT: EventResolverContext = {
   publish() {
     throw new Error(message("publish"));
   },
-  useDOMEvents() {
-    throw new Error(message("useDOMEvents"));
+  attachDOMEvents() {
+    throw new Error(message("attachDOMEvents"));
   },
-  useSubscriber() {
-    throw new Error(message("useSubscriber"));
+  detachDOMEvents() {
+    throw new Error(message("detachDOMEvents"));
+  },
+  subscribe() {
+    throw new Error(message("subscribe"));
+  },
+  unsubscribe() {
+    throw new Error(message("unsubscribe"));
+  },
+  unsubscribeAll() {
+    throw new Error(message("unsubscribeAll"));
   },
 };
 
