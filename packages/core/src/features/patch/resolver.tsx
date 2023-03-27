@@ -6,22 +6,22 @@ import { createResolver } from "@/utils/resolver";
 import { useProvider } from "@/provider/hooks";
 import Context from "@/features/patch/context";
 
-import usePatchNodes from "@/features/patch/hooks/internal/usePatchNodes";
-import usePatchStores from "@/features/patch/hooks/internal/usePatchStores";
-import usePatchRequests from "@/features/patch/hooks/internal/usePatchRequests";
+import usePatchNodeFeatures from "@/features/patch/hooks/internal/usePatchNodeFeatures";
+import usePatchStoreFeatures from "@/features/patch/hooks/internal/usePatchStoreFeatures";
+import usePatchRequestFeatures from "@/features/patch/hooks/internal/usePatchRequestFeatures";
 
 const PatchResolver = createResolver(({ dialogKey, children }) => {
   const { ref: getRef } = useProvider();
   const ref = useMemo(() => getRef(dialogKey), [getRef, dialogKey]);
 
   // Patch를 등록 및 관리합니다.
-  const { nodes, useRegisterEffect, reservePatch, hasPatch } = usePatchNodes();
+  const { nodes, useRegisterEffect, reservePatch, hasPatch } = usePatchNodeFeatures();
 
   // 각 Patch 내부에서 사용하는 Store를 관리합니다.
-  const { getStore, applyStore } = usePatchStores();
+  const { getStore, applyStore } = usePatchStoreFeatures();
 
   // Patch 요청을 관리합니다.
-  const { requestPatch, useRequestEffect } = usePatchRequests();
+  const { requestPatch, useRequestEffect } = usePatchRequestFeatures();
 
   // 예약된 Patch를 등록 요청 시 같이 onInit()를 수행하여 Store를 초기화합니다.
   useRegisterEffect(

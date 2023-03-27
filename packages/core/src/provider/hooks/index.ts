@@ -1,3 +1,1 @@
-export { default as useContainer } from "@/provider/hooks/useContainer";
-
-export { default as useProvider } from "@/provider/hooks/useProvider";
+export { default as useDialogProvider } from "@/provider/hooks/external/useDialogProvider";

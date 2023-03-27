@@ -2,7 +2,7 @@ import { useCallback, useRef } from "react";
 
 import { DialogKey } from "$common";
 
-const useContainer = <T>() => {
+const useProviderContainerFeatures = <T>() => {
   const container = useRef<WeakMap<DialogKey, T>>(new WeakMap());
 
   const register = useCallback((key: DialogKey, element: T) => {
@@ -29,4 +29,4 @@ const useContainer = <T>() => {
   return { register, has, get };
 };
 
-export default useContainer;
+export default useProviderContainerFeatures;

@@ -1,9 +1,10 @@
 import React, { useCallback } from "react";
-import { Dialog, DialogKey } from "$common";
-import { useContainer } from "@/provider/hooks";
 
-const useDialogs = () => {
-  const { register, has, get } = useContainer<React.MemoExoticComponent<Dialog>>();
+import { Dialog, DialogKey } from "$common";
+import useProviderContainerFeatures from "@/provider/hooks/internal/useProviderContainerFeatures";
+
+const useProviderDialogFeatures = () => {
+  const { register, has, get } = useProviderContainerFeatures<React.MemoExoticComponent<Dialog>>();
 
   const registerDialog = useCallback(
     (key: DialogKey, dialog: Dialog) => {
@@ -16,4 +17,4 @@ const useDialogs = () => {
   return { registerDialog, hasDialog: has, getDialog: get };
 };
 
-export default useDialogs;
+export default useProviderDialogFeatures;

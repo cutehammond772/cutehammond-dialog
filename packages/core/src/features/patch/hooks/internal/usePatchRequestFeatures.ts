@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PatchRequest, PatchRequestCallback } from "$features/patch/common";
 
-const usePatchRequests = () => {
+const usePatchRequestFeatures = () => {
   const [requests, setRequests] = useState<Array<PatchRequest<any>>>([]);
 
   const callback = useRef<PatchRequestCallback>(() => {});
@@ -31,4 +31,4 @@ const usePatchRequests = () => {
   return { requestPatch, useRequestEffect };
 };
 
-export default usePatchRequests;
+export default usePatchRequestFeatures;

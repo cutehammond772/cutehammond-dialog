@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { PatchID } from "$features/patch/common";
 
-const usePatchStores = () => {
+const usePatchStoreFeatures = () => {
   const [stores, setStores] = useState<Record<PatchID, any>>({});
 
   const getStore = useCallback(
@@ -37,4 +37,4 @@ const usePatchStores = () => {
   return { getStore, applyStore };
 };
 
-export default usePatchStores;
+export default usePatchStoreFeatures;

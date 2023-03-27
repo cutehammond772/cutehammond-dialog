@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from "react";
 
 import { createResolver } from "@/utils/resolver";
-import { useProvider } from "@/provider/hooks";
+import { useDialogProvider } from "@/provider/hooks";
 import Context from "@/features/default/context";
 import { DefaultResolverContext } from "$features/default";
 
 const DefaultResolver = createResolver(({ dialogKey, children }) => {
-  const { remove: removeWithKey } = useProvider();
+  const { remove: removeWithKey } = useDialogProvider();
 
   // Dialog를 삭제한다.
   const remove = useCallback(() => removeWithKey(dialogKey), [dialogKey, removeWithKey]);

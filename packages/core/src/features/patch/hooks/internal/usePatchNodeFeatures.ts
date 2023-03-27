@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PatchID, Patch, PatchRegisterCallback } from "$features/patch/common";
 
-const usePatchNodes = () => {
+const usePatchNodeFeatures = () => {
   const [nodes, setNodes] = useState<Array<Patch>>([]);
   const [reservations, setReservations] = useState<Array<Patch<any, any>>>([]);
 
@@ -43,4 +43,4 @@ const usePatchNodes = () => {
   return { hasPatch, reservePatch, useRegisterEffect, nodes };
 };
 
-export default usePatchNodes;
+export default usePatchNodeFeatures;

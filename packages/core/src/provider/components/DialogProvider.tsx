@@ -11,16 +11,16 @@ import {
 import DialogArea from "@/provider/components/DialogArea";
 import Context from "@/provider/context";
 
-import useKeys from "@/provider/hooks/useKeys";
-import useDialogs from "@/provider/hooks/useDialogs";
-import useRefs from "@/provider/hooks/useRefs";
+import useProviderKeyFeatures from "@/provider/hooks/internal/useProviderKeyFeatures";
+import useProviderDialogFeatures from "@/provider/hooks/internal/useProviderDialogFeatures";
+import useProviderRefFeatures from "@/provider/hooks/internal/useProviderRefFeatures";
 
 import DialogResolver from "@/resolver/components/DialogResolver";
 
 const DialogProvider = ({ children, layout, resolvers }: DialogProviderComponentProps) => {
-  const { keys, generateKey, removeKey } = useKeys();
-  const { registerRef, hasRef, getRef } = useRefs();
-  const { registerDialog, getDialog } = useDialogs();
+  const { keys, generateKey, removeKey } = useProviderKeyFeatures();
+  const { registerRef, hasRef, getRef } = useProviderRefFeatures();
+  const { registerDialog, getDialog } = useProviderDialogFeatures();
 
   const add: ProviderAddFn = useCallback(
     (dialog, profile) => {
