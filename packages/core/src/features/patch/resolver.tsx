@@ -6,9 +6,9 @@ import { createResolver } from "@/utils/resolver";
 import { useProvider } from "@/provider/hooks";
 import Context from "@/features/patch/context";
 
-import usePatchNodes from "@/features/patch/hooks/usePatchNodes";
-import usePatchStores from "@/features/patch/hooks/usePatchStores";
-import usePatchRequests from "@/features/patch/hooks/usePatchRequests";
+import usePatchNodes from "@/features/patch/hooks/internal/usePatchNodes";
+import usePatchStores from "@/features/patch/hooks/internal/usePatchStores";
+import usePatchRequests from "@/features/patch/hooks/internal/usePatchRequests";
 
 const PatchResolver = createResolver(({ dialogKey, children }) => {
   const { ref: getRef } = useProvider();

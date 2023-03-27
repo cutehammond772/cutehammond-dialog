@@ -1,7 +1,7 @@
 import { DOMEvent, DOMEventPayload } from "$features/event/common";
 
-import useSubscriber from "@/features/event/hooks/useSubscriber";
-import useDOMEventMapper from "@/features/event/hooks/useDOMEventMapper";
+import useSubscriber from "@/features/event/hooks/external/useSubscriber";
+import useDOMEventMapper from "@/features/event/hooks/external/useDOMEventMapper";
 
 const useDOMEvent = <T extends DOMEvent>(
   event: T,

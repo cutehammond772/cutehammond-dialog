@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+
 import { DialogEvent } from "$features/event/common";
-import useEventResolver from "@/features/event/hooks/useEventResolver";
+import useEventResolver from "@/features/event/hooks/external/useEventResolver";
 
 const useSubscriber = <E extends DialogEvent<E["payload"]>>(
   event: E["type"],

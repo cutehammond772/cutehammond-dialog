@@ -1,4 +1,4 @@
-export { default as useEventResolver } from "@/features/event/hooks/useEventResolver";
-export { default as useSubscriber } from "@/features/event/hooks/useSubscriber";
-export { default as useDOMEvent } from "@/features/event/hooks/useDOMEvent";
-export { default as useDOMEventMapper } from "@/features/event/hooks/useDOMEventMapper";
+export { default as useEventResolver } from "@/features/event/hooks/external/useEventResolver";
+export { default as useSubscriber } from "@/features/event/hooks/external/useSubscriber";
+export { default as useDOMEvent } from "@/features/event/hooks/external/useDOMEvent";
+export { default as useDOMEventMapper } from "@/features/event/hooks/external/useDOMEventMapper";

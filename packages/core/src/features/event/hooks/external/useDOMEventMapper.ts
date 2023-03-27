@@ -1,7 +1,7 @@
-import { DOMEvent } from "$features/event/common";
 import { useEffect, useState } from "react";
 
-import useEventResolver from "@/features/event/hooks/useEventResolver";
+import { DOMEvent } from "$features/event/common";
+import useEventResolver from "@/features/event/hooks/external/useEventResolver";
 
 const isDifferent = <T>(p: Array<T>, q: Array<T>) => {
   if (p.length !== q.length) return false;

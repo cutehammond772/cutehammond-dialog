@@ -12,10 +12,14 @@ type AttachDOMEventsFn = EventResolverContext["attachDOMEvents"];
 type DetachDOMEventsFn = EventResolverContext["detachDOMEvents"];
 
 const EventResolver = createResolver(({ dialogKey, children }) => {
-  const subscribe: SubscribeFn = useCallback((event, callback, duplicate) => {}, []);
+  const subscribe: SubscribeFn = useCallback((event, callback, duplicate) => {
+    return `event_subscriber::`;
+  }, []);
   const unsubscribe: UnsubscribeFn = useCallback((event) => {}, []);
   const unsubscribeAll: UnsubscribeAllFn = useCallback((event) => {}, []);
+
   const publish: PublishFn = useCallback((event) => {}, []);
+
   const attachDOMEvents: AttachDOMEventsFn = useCallback((events) => {}, []);
   const detachDOMEvents: DetachDOMEventsFn = useCallback(() => {}, []);
 
