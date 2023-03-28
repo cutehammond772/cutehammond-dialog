@@ -4,3 +4,6 @@ packages/**/types
 
 # Rollup Configuration
 rollup.config.js
+
+# Vite Configuration
+**/vite.config.ts
