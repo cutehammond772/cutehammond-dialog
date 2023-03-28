@@ -6,10 +6,13 @@ export { default as DialogArea } from "@/provider/components/DialogArea";
 export { default as DialogResolver } from "@/resolver/components/DialogResolver";
 
 /* default resolver */
-export { useDefaultResolver } from "@/features/default/hooks";
+export * from "@/features/default/hooks";
 
 /* patch resolver */
-export { usePatches, usePatchResolver } from "@/features/patch/hooks";
+export * from "@/features/patch/hooks";
+
+/* event resolver */
+export * from "@/features/event/hooks";
 
 /* resolver utils */
 export * from "@/utils/resolver";
