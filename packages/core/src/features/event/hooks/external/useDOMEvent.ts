@@ -5,8 +5,8 @@ import useDOMEventMapper from "@/features/event/hooks/external/useDOMEventMapper
 
 const useDOMEvent = <T extends DOMEvent>(
   event: T,
-  callback: (payload: DOMEventPayload<T>) => void,
-  duplicate?: boolean,
+  subscriber: (payload: DOMEventPayload<T>) => void,
+  multiple?: boolean,
   autoMapping = true
 ) => {
   // 먼저 DOMEvent를 등록합니다.
@@ -14,7 +14,7 @@ const useDOMEvent = <T extends DOMEvent>(
   useDOMEventMapper(autoMapping ? [event] : []);
 
   // 이 DOMEvent를 구독하는 Hook을 반환합니다.
-  return useSubscriber<{ type: T; payload: DOMEventPayload<T> }>(event, callback, duplicate);
+  return useSubscriber(event, subscriber, multiple);
 };
 
 export default useDOMEvent;

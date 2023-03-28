@@ -4,24 +4,23 @@ import { EventResolverContext } from "$features/event/context";
 import { createResolver } from "@/utils/resolver";
 import Context from "@/features/event/context";
 
-type PublishFn = EventResolverContext["publish"];
-type SubscribeFn = EventResolverContext["subscribe"];
-type UnsubscribeFn = EventResolverContext["unsubscribe"];
-type UnsubscribeAllFn = EventResolverContext["unsubscribeAll"];
-type AttachDOMEventsFn = EventResolverContext["attachDOMEvents"];
-type DetachDOMEventsFn = EventResolverContext["detachDOMEvents"];
+import useEventSubscribeFeatures from "@/features/event/hooks/internal/useEventSubscribeFeatures";
+import useEventPublishFeatures from "@/features/event/hooks/internal/useEventPublishFeatures";
+import useEventDOMFeatures from "@/features/event/hooks/internal/useEventDOMFeatures";
 
 const EventResolver = createResolver(({ dialogKey, children }) => {
-  const subscribe: SubscribeFn = useCallback((event, callback, duplicate) => {
-    return `event_subscriber::`;
-  }, []);
-  const unsubscribe: UnsubscribeFn = useCallback((event) => {}, []);
-  const unsubscribeAll: UnsubscribeAllFn = useCallback((event) => {}, []);
+  const { subscribe, unsubscribe, unsubscribeAll, dispatchEvent } = useEventSubscribeFeatures();
+  const { publish, useEventEffect } = useEventPublishFeatures();
+  const { attachDOMEvents, detachDOMEvents } = useEventDOMFeatures(dialogKey, publish);
 
-  const publish: PublishFn = useCallback((event) => {}, []);
-
-  const attachDOMEvents: AttachDOMEventsFn = useCallback((events) => {}, []);
-  const detachDOMEvents: DetachDOMEventsFn = useCallback(() => {}, []);
+  useEventEffect(
+    useCallback(
+      (events) => {
+        events.forEach(dispatchEvent);
+      },
+      [dispatchEvent]
+    )
+  );
 
   const value = useMemo(
     (): EventResolverContext => ({

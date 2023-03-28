@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo } from "react";
 import { PatchResolverContext } from "$features/patch/context";
 
 import { createResolver } from "@/utils/resolver";
-import { useProvider } from "@/provider/hooks";
+import { useDialogProvider } from "@/provider/hooks";
 import Context from "@/features/patch/context";
 
 import usePatchNodeFeatures from "@/features/patch/hooks/internal/usePatchNodeFeatures";
@@ -11,7 +11,7 @@ import usePatchStoreFeatures from "@/features/patch/hooks/internal/usePatchStore
 import usePatchRequestFeatures from "@/features/patch/hooks/internal/usePatchRequestFeatures";
 
 const PatchResolver = createResolver(({ dialogKey, children }) => {
-  const { ref: getRef } = useProvider();
+  const { ref: getRef } = useDialogProvider();
   const ref = useMemo(() => getRef(dialogKey), [getRef, dialogKey]);
 
   // Patch를 등록 및 관리합니다.
