@@ -2,8 +2,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": false,
+    "removeComments": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "$": ["./src/decl/common"],
+      "$*": ["./src/decl/*"]
     }
   },
   "include": ["src"]
