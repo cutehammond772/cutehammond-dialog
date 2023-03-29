@@ -14,6 +14,9 @@ const OUT_OF_CONTEXT: DialogProviderContext = {
   remove() {
     throw new Error(errorMessage("remove"));
   },
+  removeWithID() {
+    throw new Error(errorMessage("removeWithID"));
+  },
 };
 
 const Context = React.createContext<DialogProviderContext>(OUT_OF_CONTEXT);

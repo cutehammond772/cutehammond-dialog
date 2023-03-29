@@ -11,7 +11,10 @@ export * from "@/features/patch/hooks";
 /* event resolver */
 export * from "@/features/event/hooks";
 
-/* creators */
+/* lib creators */
 export * from "@/lib/creator/resolver";
 export * from "@/lib/creator/patch";
 export * from "@/lib/creator/dialog";
+
+/* lib hooks */
+export { default as useDialog } from "@/lib/hooks/useDialog";
