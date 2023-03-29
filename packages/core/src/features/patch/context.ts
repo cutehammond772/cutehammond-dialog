@@ -1,6 +1,6 @@
 import React from "react";
-import { PatchResolverContext } from "$features/patch/context";
-import { createResolverErrorMessage } from "@/utils/resolver";
+import { PatchResolverContext } from "decl-context/patch";
+import { createResolverErrorMessage } from "@/lib/creator/resolver";
 
 const message = createResolverErrorMessage("PatchResolver");
 

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-import { Dialog, DialogKey } from "$common";
+import { Dialog, DialogKey } from "decl";
 import useProviderContainerFeatures from "@/provider/hooks/internal/useProviderContainerFeatures";
 
 const useProviderDialogFeatures = () => {

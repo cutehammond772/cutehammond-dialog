@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { DOMEvent } from "$features/event/common";
+import { DOMEvent } from "decl-event";
 import useEventResolver from "@/features/event/hooks/external/useEventResolver";
 
 const isDifferent = <T>(p: Array<T>, q: Array<T>) => {

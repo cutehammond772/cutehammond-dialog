@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 
-import { DialogKey } from "$common";
+import { DialogKey } from "decl";
 
 const useProviderContainerFeatures = <T>() => {
   const container = useRef<WeakMap<DialogKey, T>>(new WeakMap());

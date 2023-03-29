@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { PatchID } from "$features/patch/common";
+import { PatchID } from "decl-patch";
 
 const usePatchStoreFeatures = () => {
   const [stores, setStores] = useState<Record<PatchID, any>>({});

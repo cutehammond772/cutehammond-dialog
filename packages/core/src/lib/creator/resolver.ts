@@ -1,4 +1,4 @@
-import { CustomResolver, CustomResolverComponent } from "$resolver/common";
+import { CustomResolver, CustomResolverComponent } from "decl-resolver";
 import { generateResolverID } from "@/utils/id";
 
 export const createResolverErrorMessage = (resolverName: string) => (methodName: string) =>

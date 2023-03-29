@@ -3,9 +3,9 @@
   "compilerOptions": {
     "removeComments": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "$": ["./src/decl/common"],
-      "$*": ["./src/decl/*"]
+      "decl": ["./src/decl"],
+      "decl-*": ["./src/decl/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

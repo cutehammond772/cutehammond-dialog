@@ -1,12 +1,8 @@
 import React, { useCallback, useMemo } from "react";
 
-import { DEFAULT_PROFILE, DialogKey, isCustomComponent } from "$common";
-import {
-  DialogProviderComponentProps,
-  DialogProviderContext,
-  ProviderAddFn,
-  ProviderRemoveFn,
-} from "$provider";
+import { DEFAULT_PROFILE, DialogKey, isCustomComponent } from "decl";
+import { DialogProviderContext, Fn } from "decl-context/provider";
+import { DialogProviderComponentProps } from "decl-provider";
 
 import DialogArea from "@/provider/components/DialogArea";
 import Context from "@/provider/context";
@@ -22,7 +18,7 @@ const DialogProvider = ({ children, layout, resolvers }: DialogProviderComponent
   const { registerRef, hasRef, getRef } = useProviderRefFeatures();
   const { registerDialog, getDialog } = useProviderDialogFeatures();
 
-  const add: ProviderAddFn = useCallback(
+  const add: Fn<"add"> = useCallback(
     (dialog, profile) => {
       const key = generateKey(profile ?? DEFAULT_PROFILE);
       registerDialog(key, dialog);
@@ -33,7 +29,7 @@ const DialogProvider = ({ children, layout, resolvers }: DialogProviderComponent
     [generateKey, registerDialog]
   );
 
-  const remove: ProviderRemoveFn = useCallback((key) => removeKey(key), [removeKey]);
+  const remove: Fn<"remove"> = useCallback((key) => removeKey(key), [removeKey]);
 
   // 첫 렌더링 시 Ref 객체를 가져와 등록합니다.
   const initRef = useCallback(

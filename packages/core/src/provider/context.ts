@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DialogProviderContext } from "$provider";
+import { DialogProviderContext } from "decl-context/provider";
 
 const errorMessage = (method: string) =>
   `DialogProvider 외부에서는 ${method}()를 사용할 수 없습니다.`;

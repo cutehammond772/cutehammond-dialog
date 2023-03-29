@@ -1,5 +1,5 @@
 import React from "react";
-import { DialogResolverComponentProps } from "$resolver/component";
+import { DialogResolverComponentProps } from "decl-resolver";
 
 import PatchResolver from "@/features/patch/resolver";
 import EventResolver from "@/features/event/resolver";

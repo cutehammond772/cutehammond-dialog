@@ -1,4 +1,4 @@
-import { Dialog, DialogComponentProfile } from "$";
+import { Dialog, DialogComponentProfile } from "decl";
 
 export const createDialog = <T extends object>(
   dialog: Dialog,

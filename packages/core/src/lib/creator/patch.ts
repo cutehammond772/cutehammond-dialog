@@ -1,4 +1,4 @@
-import { Patch } from "$features/patch/common";
+import { Patch } from "decl-patch";
 import { generatePatchID } from "@/utils/id";
 
 type PatchHandler<S extends object = object, R extends object = object> = keyof Omit<

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Patch } from "$features/patch/common";
+import { Patch } from "decl-patch";
 import usePatchResolver from "@/features/patch/hooks/external/usePatchResolver";
 
 const usePatches = (patches: Array<Patch>) => {
