@@ -1,6 +1,9 @@
-import { Dialog, DialogComponentProfile } from "decl";
+import { Dialog, DialogComponent, DialogComponentProfile } from "decl";
 
 export const createDialog = <T extends object>(
-  dialog: Dialog,
-  template?: DialogComponentProfile<T>
-) => {};
+  component: DialogComponent,
+  profile?: DialogComponentProfile<T>
+): Dialog<T> => ({
+  component,
+  profile,
+});

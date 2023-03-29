@@ -33,10 +33,15 @@ export interface DialogKey {
   profile: DialogComponentProfile;
 }
 
-export type Dialog = () => JSX.Element;
+export type DialogComponent = () => JSX.Element;
 
 export interface DialogKeyProps {
   dialogKey: DialogKey;
 }
 
 export interface DialogComponentProps extends React.PropsWithChildren, DialogKeyProps {}
+
+export interface Dialog<T extends object = object> {
+  component: DialogComponent;
+  profile?: DialogComponentProfile<T>;
+}
