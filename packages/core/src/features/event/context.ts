@@ -1,6 +1,6 @@
 import React from "react";
-import { EventResolverContext } from "$features/event/context";
-import { createResolverErrorMessage } from "@/utils/resolver";
+import { EventResolverContext } from "decl-context/event";
+import { createResolverErrorMessage } from "@/lib/creator/resolver";
 
 const message = createResolverErrorMessage("EventResolver");
 

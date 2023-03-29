@@ -1,7 +1,7 @@
-import { DialogID } from "$";
-import { ResolverID } from "$resolver/common";
-import { PatchID } from "$features/patch/common";
-import { DialogEventID, DialogEventSubscriberID } from "$features/event/common";
+import { DialogID } from "decl";
+import { ResolverID } from "decl-resolver";
+import { PatchID } from "decl-patch";
+import { DialogEventID, DialogEventSubscriberID } from "decl-event";
 
 export const generateDialogID = (): DialogID => {
   const uuid = crypto.randomUUID();

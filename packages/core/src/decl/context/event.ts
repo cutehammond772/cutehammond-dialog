@@ -4,7 +4,9 @@ import {
   DialogEventSubscriberID,
   DialogEventType,
   DialogEventSubscriber,
-} from "$features/event/common";
+} from "decl-event";
+
+export type Fn<T extends keyof EventResolverContext> = EventResolverContext[T];
 
 export interface EventResolverContext {
   // DOMEvent를 이 Dialog에 매핑합니다.

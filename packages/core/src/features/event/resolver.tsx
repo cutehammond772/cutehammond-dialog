@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
-import { EventResolverContext } from "$features/event/context";
+import { EventResolverContext } from "decl-context/event";
 
-import { createResolver } from "@/utils/resolver";
+import { createResolver } from "@/lib/creator/resolver";
 import Context from "@/features/event/context";
 
 import useEventSubscribeFeatures from "@/features/event/hooks/internal/useEventSubscribeFeatures";

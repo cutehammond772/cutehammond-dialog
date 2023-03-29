@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { PatchID, Patch, PatchRegisterCallback } from "$features/patch/common";
+import { PatchID, Patch } from "decl-patch";
+import { Fn } from "decl-context/patch";
+
+type PatchRegisterCallback = (patches: Array<Patch>) => void;
 
 const usePatchNodeFeatures = () => {
   const [nodes, setNodes] = useState<Array<Patch>>([]);
@@ -8,12 +11,12 @@ const usePatchNodeFeatures = () => {
   const ids = useRef<Set<PatchID>>(new Set());
   const callback = useRef<PatchRegisterCallback>(() => {});
 
-  const hasPatch = useCallback((id: PatchID) => ids.current.has(id), []);
+  const has: Fn<"has"> = useCallback((id) => ids.current.has(id), []);
 
   /**
    * Patch를 예약합니다.
    */
-  const reservePatch = useCallback(<S extends object, R extends object>(patch: Patch<S, R>) => {
+  const reserve: Fn<"reserve"> = useCallback((patch) => {
     if (ids.current.has(patch.id)) {
       throw new Error(`Patch '${patch.id}'는 이미 등록 또는 예약된 상태입니다.`);
     }
@@ -40,7 +43,7 @@ const usePatchNodeFeatures = () => {
     setReservations((rvs) => rvs.slice(reservations.length));
   }, [reservations]);
 
-  return { hasPatch, reservePatch, useRegisterEffect, nodes };
+  return { has, reserve, useRegisterEffect, nodes };
 };
 
 export default usePatchNodeFeatures;

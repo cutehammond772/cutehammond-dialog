@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import { EventResolverContext } from "$features/event/context";
+import { Fn } from "decl-context/event";
 import useEventResolver from "@/features/event/hooks/external/useEventResolver";
 
-type UseSubscriberFn = (...params: Parameters<EventResolverContext["subscribe"]>) => void;
+type UseSubscriberFn = (...params: Parameters<Fn<"subscribe">>) => void;
 
 const useSubscriber: UseSubscriberFn = (eventType, subscriber, multiple) => {
   const { subscribe, unsubscribe } = useEventResolver();

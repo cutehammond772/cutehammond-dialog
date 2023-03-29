@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { EventResolverContext } from "$features/event/context";
-import { DialogEvent } from "$features/event/common";
+import { Fn } from "decl-context/event";
+import { DialogEvent } from "decl-event";
 
-type PublishFn = EventResolverContext["publish"];
 type EventEffectCallback = (events: Array<DialogEvent>) => void;
 
 const useEventPublishFeatures = () => {
   const [events, setEvents] = useState<Array<DialogEvent>>([]);
   const effectCallback = useRef<EventEffectCallback>(() => {});
 
-  const publish: PublishFn = useCallback(<E extends DialogEvent>(event: E) => {
+  const publish: Fn<"publish"> = useCallback(<E extends DialogEvent>(event: E) => {
     setEvents((evs) => evs.concat(event));
   }, []);
 

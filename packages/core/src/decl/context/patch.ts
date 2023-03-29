@@ -1,4 +1,6 @@
-import { Patch, PatchID, PatchRequest } from "$features/patch/common";
+import { Patch, PatchID, PatchRequest } from "decl-patch";
+
+export type Fn<T extends keyof PatchResolverContext> = PatchResolverContext[T];
 
 export interface PatchResolverContext {
   // Patch 요청을 보냅니다. 등록되지 않은 Patch인 경우 무시됩니다.

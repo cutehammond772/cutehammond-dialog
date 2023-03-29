@@ -1,16 +1,13 @@
+import { useCallback, useRef } from "react";
+
 import {
   DialogEvent,
   DialogEventSubscriber,
   DialogEventSubscriberID,
   DialogEventType,
-} from "$features/event/common";
-import { EventResolverContext } from "$features/event/context";
+} from "decl-event";
+import { Fn } from "decl-context/event";
 import { createEventSubscriberID } from "@/utils/id";
-import { useCallback, useRef } from "react";
-
-type SubscribeFn = EventResolverContext["subscribe"];
-type UnsubscribeFn = EventResolverContext["unsubscribe"];
-type UnsubscribeAllFn = EventResolverContext["unsubscribeAll"];
 
 const useEventSubscribeFeatures = () => {
   const subscribers = useRef<
@@ -18,7 +15,7 @@ const useEventSubscribeFeatures = () => {
   >(new Map());
   const events = useRef<Map<DialogEventType, Array<DialogEventSubscriberID>>>(new Map());
 
-  const subscribe: SubscribeFn = useCallback((event, subscriber, multiple) => {
+  const subscribe: Fn<"subscribe"> = useCallback((event, subscriber, multiple) => {
     if (events.current.get(event)?.length && !multiple) {
       throw new Error("복수의 이벤트 구독자를 등록하려면 { multiple: true } 옵션을 설정하세요.");
     }
@@ -29,7 +26,7 @@ const useEventSubscribeFeatures = () => {
     return subscriberID;
   }, []);
 
-  const unsubscribeAll: UnsubscribeAllFn = useCallback((event) => {
+  const unsubscribeAll: Fn<"unsubscribeAll"> = useCallback((event) => {
     if (!events.current.has(event)) {
       throw new Error(`현재 '${event}' 이벤트의 구독자가 존재하지 않습니다.`);
     }
@@ -38,7 +35,7 @@ const useEventSubscribeFeatures = () => {
     events.current.delete(event);
   }, []);
 
-  const unsubscribe: UnsubscribeFn = useCallback((subscriberID) => {
+  const unsubscribe: Fn<"unsubscribe"> = useCallback((subscriberID) => {
     if (!subscribers.current.has(subscriberID)) {
       throw new Error("존재하지 않는 구독자입니다.");
     }

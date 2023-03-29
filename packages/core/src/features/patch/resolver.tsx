@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo } from "react";
 
-import { PatchResolverContext } from "$features/patch/context";
+import { PatchResolverContext } from "decl-context/patch";
 
-import { createResolver } from "@/utils/resolver";
+import { createResolver } from "@/lib/creator/resolver";
 import { useDialogProvider } from "@/provider/hooks";
 import Context from "@/features/patch/context";
 
@@ -15,13 +15,13 @@ const PatchResolver = createResolver(({ dialogKey, children }) => {
   const ref = useMemo(() => getRef(dialogKey), [getRef, dialogKey]);
 
   // Patch를 등록 및 관리합니다.
-  const { nodes, useRegisterEffect, reservePatch, hasPatch } = usePatchNodeFeatures();
+  const { nodes, useRegisterEffect, reserve, has } = usePatchNodeFeatures();
 
   // 각 Patch 내부에서 사용하는 Store를 관리합니다.
   const { getStore, applyStore } = usePatchStoreFeatures();
 
   // Patch 요청을 관리합니다.
-  const { requestPatch, useRequestEffect } = usePatchRequestFeatures();
+  const { request, useRequestEffect } = usePatchRequestFeatures();
 
   // 예약된 Patch를 등록 요청 시 같이 onInit()를 수행하여 Store를 초기화합니다.
   useRegisterEffect(
@@ -41,9 +41,9 @@ const PatchResolver = createResolver(({ dialogKey, children }) => {
             requests
               .filter((req) => req.id === id)
               .reduce(
-                (acc, { request }) =>
+                (acc, { req }) =>
                   (store) =>
-                    onRequest({ request, store: acc(store) }),
+                    onRequest({ request: req, store: acc(store) }),
                 (store: object) => ({ ...store })
               )
           )
@@ -73,8 +73,8 @@ const PatchResolver = createResolver(({ dialogKey, children }) => {
 
   // 불필요한 렌더링을 막는다.
   const value = useMemo(
-    (): PatchResolverContext => ({ request: requestPatch, reserve: reservePatch, has: hasPatch }),
-    [hasPatch, requestPatch, reservePatch]
+    (): PatchResolverContext => ({ request, reserve, has }),
+    [request, reserve, has]
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

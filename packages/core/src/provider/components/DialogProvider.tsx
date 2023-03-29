@@ -1,12 +1,8 @@
 import React, { useCallback, useMemo } from "react";
 
-import { DEFAULT_PROFILE, DialogKey, isCustomComponent } from "$common";
-import {
-  DialogProviderComponentProps,
-  DialogProviderContext,
-  ProviderAddFn,
-  ProviderRemoveFn,
-} from "$provider";
+import { DEFAULT_PROFILE, DialogKey, isCustomComponent } from "decl";
+import { DialogProviderContext, Fn } from "decl-context/provider";
+import { DialogProviderComponentProps } from "decl-provider";
 
 import DialogArea from "@/provider/components/DialogArea";
 import Context from "@/provider/context";
@@ -22,18 +18,29 @@ const DialogProvider = ({ children, layout, resolvers }: DialogProviderComponent
   const { registerRef, hasRef, getRef } = useProviderRefFeatures();
   const { registerDialog, getDialog } = useProviderDialogFeatures();
 
-  const add: ProviderAddFn = useCallback(
-    (dialog, profile) => {
+  const add: Fn<"add"> = useCallback(
+    ({ component, profile }) => {
       const key = generateKey(profile ?? DEFAULT_PROFILE);
-      registerDialog(key, dialog);
 
-      // 이후 이 ID를 활용할 수 있도록 해야 한다.
+      registerDialog(key, component);
       return key.id;
     },
     [generateKey, registerDialog]
   );
 
-  const remove: ProviderRemoveFn = useCallback((key) => removeKey(key), [removeKey]);
+  const removeWithID: Fn<"removeWithID"> = useCallback(
+    (id) => {
+      const dialogKey = keys.find((key) => key.id === id);
+      if (!dialogKey) {
+        throw new Error("DialogID에 해당하는 DialogKey가 존재하지 않습니다.");
+      }
+
+      removeKey(dialogKey);
+    },
+    [keys, removeKey]
+  );
+
+  const remove: Fn<"remove"> = useCallback((key) => removeKey(key), [removeKey]);
 
   // 첫 렌더링 시 Ref 객체를 가져와 등록합니다.
   const initRef = useCallback(
@@ -49,7 +56,7 @@ const DialogProvider = ({ children, layout, resolvers }: DialogProviderComponent
 
   // 불필요한 렌더링을 막는다.
   const provider = useMemo(
-    (): DialogProviderContext => ({ add, remove, ref: getRef }),
+    (): DialogProviderContext => ({ add, remove, removeWithID, ref: getRef }),
     [add, remove, getRef]
   );
 

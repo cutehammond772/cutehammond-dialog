@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { DialogComponentProfile, DialogKey } from "$common";
+import { DialogComponentProfile, DialogKey } from "decl";
 import { generateDialogID } from "@/utils/id";
 
 /**
