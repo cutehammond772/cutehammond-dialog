@@ -14,10 +14,10 @@ process.env.BABEL_ENV = "production";
 const EXTENSIONS = [".js", ".jsx", ".ts", ".tsx"];
 
 // 빌드 옵션을 나타냅니다.
-const ESM_OPTION = { type: "esm", extension: "js", decl: "ts" };
-const CJS_OPTION = { type: "cjs", extension: "cjs", decl: "cts" };
+export const ESM_OPTION = { type: "esm", extension: "js", decl: "ts" };
+export const CJS_OPTION = { type: "cjs", extension: "cjs", decl: "cts" };
 
-const bundleDecl = ({ option }) => ({
+export const bundleDecl = ({ option }) => ({
   input: "./src/index.ts",
   output: [
     {
@@ -28,7 +28,7 @@ const bundleDecl = ({ option }) => ({
   plugins: [dts({ tsconfig: `./tsconfig.${option.type}.json` })],
 });
 
-const bundleJS = ({ option }) => ({
+export const bundleJS = ({ option }) => ({
   input: "./src/index.ts",
   output: [
     {
@@ -45,7 +45,12 @@ const bundleJS = ({ option }) => ({
     json(),
     babel({
       exclude: "node_modules",
-      configFile: "../../babel.config.json",
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript",
+        "@babel/preset-flow",
+      ],
       babelHelpers: "bundled",
       extensions: EXTENSIONS,
     }),
@@ -53,9 +58,11 @@ const bundleJS = ({ option }) => ({
   ],
 });
 
-export default [
-  bundleJS({ option: ESM_OPTION }),
-  bundleJS({ option: CJS_OPTION }),
-  bundleDecl({ option: ESM_OPTION }),
-  bundleDecl({ option: CJS_OPTION }),
-];
+export default function bundle() {
+  return [
+    bundleJS({ option: ESM_OPTION }),
+    bundleJS({ option: CJS_OPTION }),
+    bundleDecl({ option: ESM_OPTION }),
+    bundleDecl({ option: CJS_OPTION }),
+  ];
+}

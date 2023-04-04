@@ -1,4 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["./packages/**/src", "./examples/**/src"]
+  "extends": "@cutehammond/dialog-tsconfig",
+  "include": ["packages/**/src", "examples/**/src"]
 }
