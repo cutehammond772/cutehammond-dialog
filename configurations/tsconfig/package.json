@@ -1,0 +1,7 @@
+{
+  "name": "@cutehammond/dialog-tsconfig",
+  "version": "0.0.0",
+  "description": "tsconfig of the @cutehammond/dialog library.",
+  "license": "UNLICENSED",
+  "main": "tsconfig.json"
+}
