@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "yarn clear && yarn build:dist",
-    "build:dist": "rollup -c ../../rollup.config.js",
+    "build:dist": "rollup -c",
     "clear": "yarn clear:types && yarn clear:dist",
     "clear:types": "if exist types rmdir types /s /q",
     "clear:dist": "if exist dist rmdir dist /s /q"
@@ -38,5 +38,16 @@
   },
   "bugs": {
     "url": "https://github.com/cutehammond772/cutehammond-dialog/issues"
+  },
+  "dependencies": {
+    "@cutehammond/dialog-rollup": "*",
+    "@cutehammond/dialog-tsconfig": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.33"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   }
 }

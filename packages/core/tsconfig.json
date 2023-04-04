@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@cutehammond/dialog-tsconfig",
   "compilerOptions": {
     "removeComments": true,
     "paths": {
@@ -8,5 +8,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "package.json"]
+  "include": ["src"]
 }
