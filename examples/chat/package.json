@@ -1,0 +1,34 @@
+{
+  "name": "@cutehammond/dialog-example-chat",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The chat example of @cutehammond/dialog library.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@cutehammond/dialog-core": "*",
+    "@cutehammond/dialog-tsconfig": "^0.0.0",
+    "@linaria/babel-preset": "^4.4.3",
+    "@linaria/core": "^4.2.8",
+    "@linaria/react": "^4.3.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.4",
+    "@linaria/stylelint-config-standard-linaria": "^4.1.5",
+    "@linaria/vite": "^4.2.9",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "stylelint": "^15.4.0",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1",
+    "vite-tsconfig-paths": "^4.0.8"
+  }
+}
