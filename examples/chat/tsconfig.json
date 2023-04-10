@@ -1,7 +1,14 @@
 {
   "extends": "@cutehammond/dialog-tsconfig",
   "compilerOptions": {
-    "paths": {}
+    "composite": false,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@public/*": ["./src/public/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "../../packages/core" }]
